@@ -9,7 +9,16 @@ const excuseRoutes = require('./routes/excuseRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-app.use(cors({ origin: true, credentials: true }));
+// Enable CORS and cache preflight responses to reduce repeated OPTIONS requests.
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: 86400, // 24h
+  })
+);
 app.use(express.json());
 
 app.use('/api', authRoutes);
