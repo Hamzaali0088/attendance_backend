@@ -7,6 +7,7 @@ const authRoutes = require('./routes/authRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
 const excuseRoutes = require('./routes/excuseRoutes');
 const userRoutes = require('./routes/userRoutes');
+const ruleRoutes = require('./routes/ruleRoutes');
 
 const app = express();
 // Enable CORS and cache preflight responses to reduce repeated OPTIONS requests.
@@ -14,7 +15,7 @@ app.use(
   cors({
     origin: true,
     credentials: true,
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     maxAge: 86400, // 24h
   })
@@ -25,6 +26,7 @@ app.use('/api', authRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/excuses', excuseRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/rules', ruleRoutes);
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
