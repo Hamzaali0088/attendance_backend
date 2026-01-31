@@ -8,6 +8,7 @@ const attendanceRoutes = require('./routes/attendanceRoutes');
 const excuseRoutes = require('./routes/excuseRoutes');
 const userRoutes = require('./routes/userRoutes');
 const ruleRoutes = require('./routes/ruleRoutes');
+const meRoutes = require('./routes/meRoutes');
 
 const app = express();
 // Enable CORS and cache preflight responses to reduce repeated OPTIONS requests.
@@ -27,6 +28,7 @@ app.use('/api/attendance', attendanceRoutes);
 app.use('/api/excuses', excuseRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/rules', ruleRoutes);
+app.use('/api/me', meRoutes);
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
