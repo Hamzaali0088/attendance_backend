@@ -29,10 +29,11 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5001;
+const HOST = process.env.HOST || '0.0.0.0';
 
 async function start() {
   await connectDB();
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, HOST, () => console.log(`Server running on http://${HOST}:${PORT}`));
 }
 
 start().catch((err) => {
